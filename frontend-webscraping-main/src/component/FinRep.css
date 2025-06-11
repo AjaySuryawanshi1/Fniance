@@ -1,0 +1,262 @@
+/* FinancialReport.css */
+
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.rounded {
+  border-radius: 8px;
+}
+
+.p-4 {
+  padding: 16px;
+}
+
+.shadow {
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+}
+
+.text-lg {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-sm {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.3;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+.pl-6 {
+  padding-left: 1.5rem; /* 24px */
+}
+
+h2, h3 {
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  margin: 0;
+  padding-left: 0;
+}
+
+
+p {
+  margin: 0.25rem 0;
+}
+
+p.font-semibold {
+  font-weight: 600;
+}
+
+.text-sm.leading-relaxed {
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+
+.summary-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4f46e5; /* indigo */
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #c7d2fe; /* lighter indigo */
+}
+
+.metadata-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #1f2937; /* darker gray */
+}
+
+.metadata-label {
+  font-weight: 600;
+}
+
+.metadata-value {
+  color: #4b5563; /* medium gray */
+  max-width: 60%;
+  text-align: right;
+  word-wrap: break-word;
+}
+
+.source-documents {
+  margin-top: 1.5rem;
+}
+
+.source-title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #4338ca; /* darker indigo */
+  margin-bottom: 0.5rem;
+}
+
+.source-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #e0e7ff; /* very light indigo */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.source-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background-color: #f9fafb; /* very light gray */
+  border-bottom: 1px solid #e0e7ff;
+  font-size: 0.95rem;
+  color: #374151;
+  transition: background-color 0.2s ease;
+}
+
+.source-item:last-child {
+  border-bottom: none;
+}
+
+.source-item:hover {
+  background-color: #eef2ff; /* light indigo on hover */
+  cursor: default;
+}
+
+.doc-type {
+  font-weight: 600;
+  color: #4f46e5;
+  min-width: 90px;
+}
+
+.doc-name {
+  flex: 1;
+  padding: 0 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-period {
+  color: #6b7280; /* gray-500 */
+  min-width: 110px;
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .summary-box {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .metadata-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .metadata-value {
+    max-width: 100%;
+    text-align: left;
+    margin-top: 4px;
+  }
+
+  .source-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .doc-name {
+    padding: 4px 0;
+  }
+
+  .doc-period {
+    min-width: auto;
+    text-align: left;
+    padding-top: 2px;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .summary-box {
+    padding: 10px;
+  }
+
+  th, td {
+    padding: 6px 8px;
+  }
+}
+
+
+.data-list {
+  list-style-type: disc;
+  padding-left: 24px; /* indent for bullets */
+  font-size: 0.95rem;
+  color: #333333;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.data-list li {
+  margin-bottom: 0.6rem;
+  transition: color 0.3s ease;
+}
+
+.data-list li strong {
+  font-weight: 600;
+  color: #2c3e50; /* dark slate blue */
+  min-width: 140px;
+  display: inline-block;
+}
+
+.data-list li:hover {
+  color: #4a90e2; /* subtle highlight on hover */
+  cursor: default;
+}
+
+.data-paragraph {
+  font-size: 1rem;
+  max-width: 480px;
+  color: #2c3e50;
+  font-weight: 500;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+  background: #f9fafb;
+  border-left: 4px solid #4a90e2;
+  padding: 12px 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgb(74 144 226 / 0.2);
+  /* user-select: text; */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .data-list, .data-paragraph {
+    max-width: 100%;
+    padding-left: 16px;
+  }
+
+  .data-list li strong {
+    min-width: 120px;
+  }
+}

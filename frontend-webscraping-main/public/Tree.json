@@ -1,0 +1,23 @@
+{
+  "LTIM": {
+    "2025_26": {
+      "ppt": "LTIM/presentation_2025_26.pptx",
+      "transcript": "LTIM/transcript_2025_26.pdf"
+    },
+    "2024_25": {
+      "ppt": "LTIM/presentation_2025_26.pptx",
+      "transcript": "LTIM/transcript_2025_26.pdf"
+    },
+    "2023_24": {
+      "ppt": "LTIM/presentation_2025_26.pptx",
+      "transcript": "LTIM/transcript_2025_26.pdf"
+    }
+
+  },
+    "TCS": {
+    "2025_26": {
+      "ppt": "TCS/presentation_2025_26.pptx",
+      "transcript": "TCS/transcript_2025_26.pdf"
+    }
+  }
+}

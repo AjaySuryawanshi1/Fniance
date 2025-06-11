@@ -1,0 +1,149 @@
+/* Full height base */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #222;
+  overflow: hidden; /* Prevent default scroll */
+}
+
+/* Container that splits sidebar + main pane */
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+/* Sidebar - only this scrolls */
+.sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #ffffff;
+  padding: 20px;
+  overflow-y: scroll; /* still scrollable */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+/* Chrome, Edge, Safari */
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Content inside sidebar to test scrolling */
+.company-details {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
+.company-name {
+  /* font-weight: ; */
+  cursor: pointer;
+}
+
+.year-list {
+  list-style: none;
+  padding-left: 15px;
+}
+
+/* Main content (not scrollable) */
+.main-pane {
+  flex: 1;
+  padding: 30px;
+  background-color: #f0f2f5;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+
+.main-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.download-links {
+  margin-bottom: 24px;
+}
+
+.btn {
+  padding: 8px 16px;
+  margin-right: 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  border: none;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.15);
+}
+
+.btn.blue {
+  background-color: #007bff;
+}
+
+.btn.green {
+  background-color: #28a745;
+}
+
+/* Summary */
+.summary-box {
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.summary-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.sub-title {
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.text-muted {
+  color: #666;
+  padding: 20px;
+}
+
+.error-text {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.year-list li {
+  margin-top: 15px;
+  margin-bottom: 15px; /* adds vertical spacing */
+}
+
+.year-list li .link {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.year-list li .link:hover {
+  background-color: #e0e0e0;
+  text-decoration: none;
+}

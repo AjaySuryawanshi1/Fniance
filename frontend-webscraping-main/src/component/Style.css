@@ -1,0 +1,123 @@
+.section {
+  margin-top: 1.5rem;
+  background: rgb(242, 239, 239);
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.tab-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  margin: 5px;
+  padding: 0.5rem 1rem;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.tab-btn.active {
+  background-color: #4287f5;
+  color: white;
+}
+
+.tab-content {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+/* MainPage.css */
+.layout-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+
+/* Sidebar styling */
+.layout-container aside {
+  width: 260px; /* Adjust as needed */
+  background-color: white;
+  border-right: 1px solid #ddd;
+  padding: 16px;
+  overflow-y: auto;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+/* Main display styling */
+.layout-container > :last-child {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.tab-panel-wrapper {
+  max-height: calc(100vh - 200px); 
+  overflow-y: auto;
+  padding-right: 8px; 
+}
+
+
+  table {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  table th {
+    background-color: #4287f5;
+    color: white;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  table tr:hover {
+    background-color: #f3f4f6;
+  }
+  
+  table button {
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 2px;
+  }
+  
+  table .edit-btn {
+    background-color: #2563eb;
+    color: white;
+  }
+  
+  table .delete-btn {
+    background-color: #dc2626;
+    color: white;
+  }
+  
+  table .save-btn {
+    background-color: #16a34a;
+    color: white;
+  }
+  
+  table .cancel-btn {
+    background-color: #d97706;
+    color: white;
+  }
