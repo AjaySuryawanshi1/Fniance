@@ -1,11 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
 import Tabs from "./Tabs.jsx";
 import Table from "./Table.jsx";
 import "./FinRep.css"; 
 
 function FinancialReport({ data }) {
-  const { metadata, data_extraction, financial_analysis } = data;
+  const { metadata, data_extraction, financial_analysis,
+          balance_sheet, shareholding} = data;
 
+  const [shareholdingView, setShareholdingView] = useState("quarterly");
   const formatNumber = (n) =>
     n == null ? "–" : Number(n).toLocaleString("en-IN");
 
@@ -221,6 +223,100 @@ function FinancialReport({ data }) {
     );
   };
 
+  const renderBalanceSheet =  (balanceSheetData) => {
+     if (!balanceSheetData || Object.keys(balanceSheetData).length === 0) {
+      return (
+        <div className="summary-box bg-white rounded p-4 shadow">
+          <h2 className="summary-title">Balance Sheet</h2>
+          <p className="text-gray-500">No balance sheet data available.</p>
+        </div>
+      );
+    }
+
+    const labels = Object.keys(balanceSheetData);
+
+    const allPeriodsSet = new Set();
+    labels.forEach((label) => {
+      Object.keys(balanceSheetData[label] || {}).forEach((period) => {
+        allPeriodsSet.add(period);
+      });
+    });
+
+    const periods = Array.from(allPeriodsSet).sort();
+    const headers = ["Item", ...periods];
+
+    const rows = labels.map((label) => [
+      label,
+      ...periods.map((period) => balanceSheetData[label]?.[period] || "–"),
+    ]);
+
+    return (
+      <>
+        <div className="summary-box space-y-4 bg-white rounded p-4 shadow">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="summary-title">Balance Sheet</h2>
+        </div>
+        <Table headers={headers} rows={rows} />
+      </div>
+        </>
+    );
+  };
+
+  const renderShareholderPattern = (patternData) => {
+        if (
+      !patternData ||
+      !patternData.quarterly ||
+      !patternData.yearly ||
+      patternData.quarterly.length === 0 ||
+      patternData.yearly.length === 0
+    ) {
+      return (
+        <div className="summary-box bg-white rounded p-4 shadow">
+          <h2 className="summary-title">Shareholding Pattern</h2>
+          <p className="text-gray-500">No shareholding data available.</p>
+        </div>
+      );
+    }
+
+    const activeData =
+      shareholdingView === "quarterly"
+        ? patternData.quarterly
+        : patternData.yearly;
+
+    const periods = Object.keys(activeData[0]).filter((k) => k !== "");
+    const rows = activeData.map((entry) => [
+      entry[""],
+      ...periods.map((period) => entry[period] || "–"),
+    ]);
+
+    return (
+      <div className="summary-box space-y-4 bg-white rounded p-4 shadow">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="summary-title">Shareholding Pattern</h2>
+          <div className="toggle-container">
+            <button
+              className={`toggle-button ${
+                shareholdingView === "quarterly" ? "active" : ""
+              }`}
+              onClick={() => setShareholdingView("quarterly")}
+            >
+              Quarterly
+            </button>
+            <button
+              className={`toggle-button ${
+                shareholdingView === "yearly" ? "active" : ""
+              }`}
+              onClick={() => setShareholdingView("yearly")}
+            >
+              Yearly
+            </button>
+          </div>
+        </div>
+        <Table headers={["Holder", ...periods]} rows={rows} />
+      </div>
+    );   
+  };
+
   const renderCommentary = () => (
     <div className="summary-box space-y-4 bg-white rounded p-4 shadow">
       <h2 className="summary-title">Financial Summary</h2>
@@ -284,6 +380,8 @@ function FinancialReport({ data }) {
         true
       )}
       {renderPeriodPane("Full Year – FY25", data_extraction.current_fy, false)}
+      {renderBalanceSheet(data.balance_sheet)}
+      {renderShareholderPattern(data.shareholding)}
       {renderCommentary()}
       {renderMiscellaneous()}
     </div>

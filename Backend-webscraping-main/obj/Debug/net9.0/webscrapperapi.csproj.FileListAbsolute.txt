@@ -243,3 +243,5 @@ D:\Finansys\Backend-webscraping-main\obj\Debug\net9.0\refint\webscrapperapi.dll
 D:\Finansys\Backend-webscraping-main\obj\Debug\net9.0\webscrapperapi.pdb
 D:\Finansys\Backend-webscraping-main\obj\Debug\net9.0\webscrapperapi.genruntimeconfig.cache
 D:\Finansys\Backend-webscraping-main\obj\Debug\net9.0\ref\webscrapperapi.dll
+D:\Finansys\Backend-webscraping-main\obj\Debug\net9.0\webscrapperapi.sourcelink.json
+D:\Finansys\Backend-webscraping-main\bin\Debug\net9.0\PuppeteerSharp.dll

@@ -23,6 +23,16 @@ namespace webscrapperapi.Controllers
         [HttpPost("run")]
         public async Task<IActionResult> RunScraper([FromQuery] int userId)
         {
+            if (userId <= 0)
+            {
+                  return BadRequest(new ApiResponse<string>
+                {
+                    Success = false,
+                    Message = "Invalid user ID provided.",
+                    ErrorCode = 400,
+                    Data = null
+                });
+            }
             try
             {
                 var result = await _scraperService.RunScrapingAsync(userId);
@@ -34,19 +44,28 @@ namespace webscrapperapi.Controllers
                     {
                         Success = false,
                         Message = "Scraper returned null unexpectedly.",
-                        ErrorCode = -2,
+                        ErrorCode = 500,
                         Data = null
                     });
                 }
-
-                if (!result.Any())
+                 if (result.Count == 0)
                 {
-                    // Still a successful operation, just no data to process
                     return Ok(new ApiResponse<List<ScrapeResult>>
                     {
                         Success = true,
                         Message = "No companies to process.",
-                        ErrorCode = 0,
+                        ErrorCode = 204,
+                        Data = new List<ScrapeResult>()
+                    });
+                }
+                if (!result.Any())
+                {
+                    // Still a successful operation, just no data to process
+                    return StatusCode(204,new ApiResponse<List<ScrapeResult>>
+                    {
+                        Success = true,
+                        Message = "No companies to process.",
+                        ErrorCode = 204,
                         Data = new List<ScrapeResult>()
                     });
                 }
@@ -56,8 +75,30 @@ namespace webscrapperapi.Controllers
                 {
                     Success = true,
                     Message = "Scraping completed successfully.",
-                    ErrorCode = 0,
+                    ErrorCode = 200,
                     Data = result
+                });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                // 403 Forbidden - unauthorized access to scraper
+                return StatusCode(403, new ApiResponse<string>
+                {
+                    Success = false,
+                    Message = $"Unauthorized access: {ex.Message}",
+                    ErrorCode = 403,
+                    Data = null
+                });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                // 404 Not Found - user or company not found
+                return NotFound(new ApiResponse<string>
+                {
+                    Success = false,
+                    Message = $"Not found: {ex.Message}",
+                    ErrorCode = 404,
+                    Data = null
                 });
             }
             catch (ArgumentException ex)
@@ -67,7 +108,7 @@ namespace webscrapperapi.Controllers
                 {
                     Success = false,
                     Message = $"Bad input: {ex.Message}",
-                    ErrorCode = -10,
+                    ErrorCode = 400,
                     Data = null
                 });
             }
@@ -78,7 +119,7 @@ namespace webscrapperapi.Controllers
                 {
                     Success = false,
                     Message = $"An internal error occurred: {ex.Message}",
-                    ErrorCode = -1,
+                    ErrorCode = 500,
                     Data = null
                 });
             }

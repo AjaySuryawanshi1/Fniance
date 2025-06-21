@@ -34,7 +34,7 @@ function ReportSummary({ reportId }) {
 
   
 
-  const {metadata,data_extraction,financial_analysis} = summary; 
+  const {metadata,data_extraction,financial_analysis,balance_sheet, shareholding} = summary; 
   
   return (
    

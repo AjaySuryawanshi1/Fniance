@@ -121,3 +121,24 @@
     background-color: #d97706;
     color: white;
   }
+  .toggle-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: left;
+}Add commentMore actions
+
+.toggle-button {
+  padding: 6px 12px;
+  margin-right : 0.2rem;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.toggle-button.active {
+  background-color: #2d6cdf;
+  color: white;
+  border-color: #2d6cdf;
+}

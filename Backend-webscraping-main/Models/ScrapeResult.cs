@@ -9,7 +9,8 @@ namespace webscrapperapi.Models
     public string PptUrl { get; set; }
     public string DateTag { get; set; }
     public string Summary { get; set; }
-    
+    public string? BalanceSheet { get; set; }
+    public string? ShareholdingPattern { get; set; }
 }
 
 }
